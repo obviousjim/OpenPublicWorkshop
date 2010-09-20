@@ -1,5 +1,0 @@
-/Users/focus/Documents/XCode Projects/openFrameworks/apps/myApps/OpenPublicWorkshop/src/ofxInteractiveSilhouette.cpp:12: error: definition of implicitly-declared 'ofxInteractiveSilhouette::ofxInteractiveSilhouette()'
-/Users/focus/Documents/XCode Projects/openFrameworks/apps/myApps/OpenPublicWorkshop/src/ofxInteractiveSilhouette.cpp: In constructor 'ofxInteractiveSilhouette::ofxInteractiveSilhouette()':
-/Users/focus/Documents/XCode Projects/openFrameworks/apps/myApps/OpenPublicWorkshop/src/ofxInteractiveSilhouette.cpp:14: error: 'hasTriangle' was not declared in this scope
-/Users/focus/Documents/XCode Projects/openFrameworks/apps/myApps/OpenPublicWorkshop/src/ofxInteractiveSilhouette.cpp: At global scope:
-/Users/focus/Documents/XCode Projects/openFrameworks/apps/myApps/OpenPublicWorkshop/src/ofxInteractiveSilhouette.cpp:17: error: definition of implicitly-declared 'ofxInteractiveSilhouette::~ofxInteractiveSilhouette()'
