@@ -9,27 +9,23 @@ void ofxTriangle::triangulate(ofxCvBlob &cvblob, int resolution)
 
 void ofxTriangle::triangulate(vector<ofPoint> contour, int resolution)
 {
-	
     int bSize = contour.size();
     float maxi = min(resolution, bSize);
 	
     Delaunay::Point tempP;
-    vector< Delaunay::Point > v;
+    vector<Delaunay::Point> v;
 	
     for(int i = 0; i < maxi; i++) {
-        int id = (int)( (float)i/maxi*bSize );
-		
-        tempP[0] = contour[id].x;
-        tempP[1] = contour[id].y;
+        //int id = (int) ( (float)i/maxi*bSize );
+		int indx = ofMap(i, 0, maxi, 0, bSize);
+        tempP[0] = contour[indx].x;
+        tempP[1] = contour[indx].y;
 		
         v.push_back(tempP);
     }
 	
     delobject = new Delaunay(v);
     delobject->Triangulate();
-
-    //triangles.clear();
-    //nTriangles = 0;
 
     Delaunay::fIterator fit;
     for ( fit = delobject->fbegin(); fit != delobject->fend(); ++fit )
@@ -38,14 +34,11 @@ void ofxTriangle::triangulate(vector<ofPoint> contour, int resolution)
         int ptb = delobject->Dest(fit);
         int ptc = delobject->Apex(fit);
 
-        int pta_id = (int)( ((float)pta/resolution)*bSize );
-        int ptb_id = (int)( ((float)ptb/resolution)*bSize );
-        int ptc_id = (int)( ((float)ptc/resolution)*bSize );
-
+        int pta_id = (int)ofMap(pta, 0, maxi, 0, bSize);
+        int ptb_id = (int)ofMap(ptb, 0, maxi, 0, bSize);
+        int ptc_id = (int)ofMap(ptc, 0, maxi, 0, bSize);
+		
         ofPoint tr[3];
-//        tr[0] = ofPoint(blob->pts[pta_id].x, blob->pts[pta_id].y);
-//        tr[1] = ofPoint(blob->pts[ptb_id].x, blob->pts[ptb_id].y);
-//        tr[2] = ofPoint(blob->pts[ptc_id].x, blob->pts[ptc_id].y);
         tr[0] = ofPoint(contour[pta_id].x, contour[pta_id].y);
         tr[1] = ofPoint(contour[ptb_id].x, contour[ptb_id].y);
         tr[2] = ofPoint(contour[ptc_id].x, contour[ptc_id].y);

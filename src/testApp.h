@@ -6,6 +6,7 @@
 #include "ofxTSPSReceiver.h"
 #include "ofxTriangle.h"
 #include "ofxInteractiveSilhouette.h"
+#include "ofxBox2d.h"
 
 class testApp : public ofBaseApp, public ofxTSPSListener
 {
@@ -24,7 +25,11 @@ class testApp : public ofBaseApp, public ofxTSPSListener
 	void windowResized(int w, int h);
 	
 	ofxTSPSReceiver* receiver;
-	ofxTriangle triangle;
+	
+	ofxBox2d				 physics;
+	vector <ofxBox2dCircle>  circles;
+	vector <ofxBox2dPolygon> polys;
+	
 	
 	//called when the person enters the system
 	void personEntered( ofxTSPSPerson* person, ofxTSPSScene* scene );

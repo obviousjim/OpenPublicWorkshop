@@ -3,34 +3,65 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 	
+	//basic drawing stuff
 	ofEnableSmoothing();
 	ofSetVerticalSync(true);
 	ofEnableAlphaBlending();
 	
+	//set up the receiver to listen for people
 	receiver = new ofxTSPSReceiver();
 	receiver->setListener( this );
 	receiver->connect(12000);
+	
+	//set up the box2d environment
+	physics.init();
+	physics.createBounds();
+	physics.setGravity(0, 10);
+	physics.checkBounds(true);
 	
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
-	triangle.clear();
 	
-//	if(receiver->totalPeople() > 0){
-//		triangle.triangulate(receiver->personAtIndex(0)->denormalizedContour(ofGetWidth(), ofGetHeight()));
-//	}
+	for (int i = polys.size()-1; i >= 0; i--) {
+		physics.world->DestroyBody(polys[i].body);
+	}
+	
+	polys.clear();
 	
 	for(int i = 0; i < receiver->totalPeople(); i++){
+
+		//get the person and their cv contour
 		ofxTSPSPerson* person = receiver->personAtIndex(i);
 		ofxInteractiveSilhouette* silhouette = (ofxInteractiveSilhouette*)person->customAttributes;
 		vector<ofPoint> contourToTriangulate = person->denormalizedContour(ofGetWidth(), ofGetHeight());
+		
+		//if we have a valid poly...
 		if(contourToTriangulate.size() > 2){
+			//clear the existing triangle set for that person and create a new one
 			silhouette->triangle.clear();
-			silhouette->triangle.triangulate( contourToTriangulate, 200 );
+			silhouette->triangle.triangulate( contourToTriangulate, 50 );
 			silhouette->hasTriangle = true;
+			
+			//for all the triangles add them to the physics world
+			for(int t = silhouette->triangle.triangles.size()-1; t >= 0; t--) {
+				ofxTriangleData& tData = silhouette->triangle.triangles[t];
+				
+				ofxBox2dPolygon poly;
+				poly.addVertex(tData.a.x, tData.a.y);
+				poly.addVertex(tData.b.x, tData.b.y);
+				poly.addVertex(tData.c.x, tData.c.y);
+				
+				if(poly.validateShape()) {
+					poly.createShape(physics.world, 0.0f, 0.0f);
+					polys.push_back(poly);
+				}
+			}
 		}
 	}
+
+	physics.update();
 }
 
 //--------------------------------------------------------------
@@ -50,7 +81,11 @@ void testApp::draw(){
 			ofLine(person->contour[c-1].x*ofGetWidth(), person->contour[c-1].y*ofGetHeight(), 
 				   person->contour[c  ].x*ofGetWidth(), person->contour[c  ].y*ofGetHeight());
 		}
-	}			
+	}
+	
+	for(int i = 0; i < circles.size(); i++){
+		circles[i].draw();
+	}
 }
 
 //called when the person enters the system
@@ -82,6 +117,10 @@ void testApp::personUpdated(ofxTSPSPerson* person, ofxTSPSScene* scene)
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
 
+	ofxBox2dCircle circle;
+	circle.setPhysics(3.0, 0.53, 0.1);
+	circle.setup(physics.getWorld(), mouseX, mouseY, 20);
+	circles.push_back(circle);
 }
 
 //--------------------------------------------------------------

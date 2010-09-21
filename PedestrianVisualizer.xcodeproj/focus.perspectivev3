@@ -269,6 +269,9 @@
 								<string>E4B69B4A0A3A1720003C02F2</string>
 								<string>E7D7B5A612479080000FA2B6</string>
 								<string>E7D7B70B1247D291000FA2B6</string>
+								<string>E7D7B70C1247D291000FA2B6</string>
+								<string>E7D7B7101247D291000FA2B6</string>
+								<string>E7D7B71A1247D291000FA2B6</string>
 								<string>E4B69E1C0A3A1BDC003C02F2</string>
 								<string>E4C2422310CC54B6004149E2</string>
 								<string>E45BE0360E8CC5DE009D7055</string>
@@ -281,8 +284,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>19</integer>
-									<integer>15</integer>
+									<integer>25</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -334,7 +336,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>E7D7B7B31247DE3E000FA2B6</string>
+										<string>E7D7B7EE1248C626000FA2B6</string>
 										<key>history</key>
 										<array>
 											<string>E7D7B6201247929D000FA2B6</string>
@@ -345,17 +347,21 @@
 											<string>E7D7B62F1247940B000FA2B6</string>
 											<string>E7D7B73D1247D8D4000FA2B6</string>
 											<string>E7D7B73E1247D8D4000FA2B6</string>
-											<string>E7D7B73F1247D8D4000FA2B6</string>
-											<string>E7D7B74B1247D9AD000FA2B6</string>
-											<string>E7D7B74C1247D9AD000FA2B6</string>
 											<string>E7D7B74D1247D9AD000FA2B6</string>
 											<string>E7D7B75A1247DA18000FA2B6</string>
-											<string>E7D7B7731247DC11000FA2B6</string>
-											<string>E7D7B7811247DC4D000FA2B6</string>
 											<string>E7D7B7A71247DD4C000FA2B6</string>
 											<string>E7D7B7A81247DD4C000FA2B6</string>
-											<string>E7D7B7A91247DD4C000FA2B6</string>
-											<string>E7D7B7AA1247DD4C000FA2B6</string>
+											<string>E7D7B7D01248C259000FA2B6</string>
+											<string>E7D7B7D21248C3B1000FA2B6</string>
+											<string>E7D7B7D31248C3B1000FA2B6</string>
+											<string>E7D7B7D51248C3B1000FA2B6</string>
+											<string>E7D7B7E71248C626000FA2B6</string>
+											<string>E7D7B7E81248C626000FA2B6</string>
+											<string>E7D7B7E91248C626000FA2B6</string>
+											<string>E7D7B7EA1248C626000FA2B6</string>
+											<string>E7D7B7EB1248C626000FA2B6</string>
+											<string>E7D7B7EC1248C626000FA2B6</string>
+											<string>E7D7B7ED1248C626000FA2B6</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -672,7 +678,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>E7D7B7B41247DE3E000FA2B6</string>
+		<string>E7D7B7EF1248C626000FA2B6</string>
 		<string>E7D7B61E1247924D000FA2B6</string>
 		<string>E7D7B61F1247924D000FA2B6</string>
 		<string>/Users/focus/Documents/XCode Projects/openFrameworks/apps/myApps/OpenPublicWorkshop/PedestrianVisualizer.xcodeproj</string>

@@ -1157,8 +1157,8 @@
 		E7D7B71A1247D291000FA2B6 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				E7D7B71B1247D291000FA2B6 /* ofxTriangle.cpp */,
 				E7D7B71C1247D291000FA2B6 /* ofxTriangle.h */,
+				E7D7B71B1247D291000FA2B6 /* ofxTriangle.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
